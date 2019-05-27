@@ -85,6 +85,15 @@ class Htpasswd
         return $this->_users;
     }
 
+    public function getPassword($username)
+    {
+        if ( $this->userExists($username) ) {
+            return $this->_users[$username];
+        } else {
+            return false;
+        }
+    }
+
     public function addUser($username, $password, $encType = self::ENCTYPE_CRYPT)
     {
         if ($this->userExists($username)) {
